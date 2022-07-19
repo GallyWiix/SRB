@@ -1,6 +1,6 @@
 package com.hy.srb.core.service;
 
-import com.hy.srb.core.entity.UserBind;
+import com.hy.srb.core.pojo.entity.UserBind;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

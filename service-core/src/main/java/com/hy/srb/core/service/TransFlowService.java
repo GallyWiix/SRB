@@ -1,6 +1,6 @@
 package com.hy.srb.core.service;
 
-import com.hy.srb.core.entity.TransFlow;
+import com.hy.srb.core.pojo.entity.TransFlow;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

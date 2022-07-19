@@ -1,3 +1,1 @@
-2022-07-16 10:19:48 [INFO ] main StartupInfoLogger.java:55 com.hy.srb.core.ServiceCoreApplication Starting ServiceCoreApplication on jeremydeMac-mini.local with PID 4951 (/Users/jeremyhuang/IdeaProjects/srb/service-core/target/classes started by jeremyhuang in /Users/jeremyhuang/IdeaProjects/srb)
-2022-07-16 10:19:48 [INFO ] main SpringApplication.java:655 com.hy.srb.core.ServiceCoreApplication The following profiles are active: dev
-2022-07-16 10:19:50 [INFO ] main StartupInfoLogger.java:61 com.hy.srb.core.ServiceCoreApplication Started ServiceCoreApplication in 1.452 seconds (JVM running for 1.847)
+2022-07-19 19:39:48 [INFO ] main StartupInfoLogger.java:61 com.hy.srb.core.ServiceCoreApplication Started ServiceCoreApplication in 1.478 seconds (JVM running for 1.919)

@@ -1,6 +1,6 @@
 package com.hy.srb.core.service.impl;
 
-import com.hy.srb.core.entity.IntegralGrade;
+import com.hy.srb.core.pojo.entity.IntegralGrade;
 import com.hy.srb.core.mapper.IntegralGradeMapper;
 import com.hy.srb.core.service.IntegralGradeService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

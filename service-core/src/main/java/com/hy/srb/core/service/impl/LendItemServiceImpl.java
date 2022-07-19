@@ -1,6 +1,6 @@
 package com.hy.srb.core.service.impl;
 
-import com.hy.srb.core.entity.LendItem;
+import com.hy.srb.core.pojo.entity.LendItem;
 import com.hy.srb.core.mapper.LendItemMapper;
 import com.hy.srb.core.service.LendItemService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

@@ -1,6 +1,6 @@
 package com.hy.srb.core.service.impl;
 
-import com.hy.srb.core.entity.LendReturn;
+import com.hy.srb.core.pojo.entity.LendReturn;
 import com.hy.srb.core.mapper.LendReturnMapper;
 import com.hy.srb.core.service.LendReturnService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

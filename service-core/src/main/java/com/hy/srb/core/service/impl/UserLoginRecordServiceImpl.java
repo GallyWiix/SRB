@@ -1,6 +1,6 @@
 package com.hy.srb.core.service.impl;
 
-import com.hy.srb.core.entity.UserLoginRecord;
+import com.hy.srb.core.pojo.entity.UserLoginRecord;
 import com.hy.srb.core.mapper.UserLoginRecordMapper;
 import com.hy.srb.core.service.UserLoginRecordService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

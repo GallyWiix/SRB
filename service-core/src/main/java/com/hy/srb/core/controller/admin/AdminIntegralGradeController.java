@@ -4,7 +4,7 @@ package com.hy.srb.core.controller.admin;
 import com.hy.common.exception.BusinessException;
 import com.hy.common.result.R;
 import com.hy.common.result.ResponseEnum;
-import com.hy.srb.core.entity.IntegralGrade;
+import com.hy.srb.core.pojo.entity.IntegralGrade;
 import com.hy.srb.core.service.IntegralGradeService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

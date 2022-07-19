@@ -1,6 +1,6 @@
 package com.hy.srb.core.service.impl;
 
-import com.hy.srb.core.entity.TransFlow;
+import com.hy.srb.core.pojo.entity.TransFlow;
 import com.hy.srb.core.mapper.TransFlowMapper;
 import com.hy.srb.core.service.TransFlowService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

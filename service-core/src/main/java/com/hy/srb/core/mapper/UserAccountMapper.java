@@ -1,6 +1,6 @@
 package com.hy.srb.core.mapper;
 
-import com.hy.srb.core.entity.UserAccount;
+import com.hy.srb.core.pojo.entity.UserAccount;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

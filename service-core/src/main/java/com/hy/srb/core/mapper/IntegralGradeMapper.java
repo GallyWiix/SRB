@@ -1,6 +1,6 @@
 package com.hy.srb.core.mapper;
 
-import com.hy.srb.core.entity.IntegralGrade;
+import com.hy.srb.core.pojo.entity.IntegralGrade;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

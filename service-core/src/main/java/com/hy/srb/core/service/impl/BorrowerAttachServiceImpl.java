@@ -1,6 +1,6 @@
 package com.hy.srb.core.service.impl;
 
-import com.hy.srb.core.entity.BorrowerAttach;
+import com.hy.srb.core.pojo.entity.BorrowerAttach;
 import com.hy.srb.core.mapper.BorrowerAttachMapper;
 import com.hy.srb.core.service.BorrowerAttachService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;

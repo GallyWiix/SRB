@@ -1,6 +1,6 @@
 package com.hy.srb.core.service.impl;
 
-import com.hy.srb.core.entity.UserInfo;
+import com.hy.srb.core.pojo.entity.UserInfo;
 import com.hy.srb.core.mapper.UserInfoMapper;
 import com.hy.srb.core.service.UserInfoService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
