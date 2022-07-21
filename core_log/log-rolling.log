@@ -1,3 +1,6 @@
 2022-07-20 19:13:09 [INFO ] main StartupInfoLogger.java:61 com.hy.srb.core.ServiceCoreApplication Started ServiceCoreApplication in 1.837 seconds (JVM running for 2.298)
 2022-07-20 19:13:37 [INFO ] http-nio-8110-exec-1 DictServiceImpl.java:78 com.hy.srb.core.service.impl.DictServiceImpl 从数据库中获取
 2022-07-20 19:13:37 [INFO ] http-nio-8110-exec-1 DictServiceImpl.java:90 com.hy.srb.core.service.impl.DictServiceImpl 将数据存入redis
+2022-07-20 20:25:38 [INFO ] main StartupInfoLogger.java:55 com.hy.srb.sms.ServiceSmsApplication Starting ServiceSmsApplication on jeremydeMac-mini.local with PID 4947 (/Users/jeremyhuang/IdeaProjects/srb/service-sms/target/classes started by jeremyhuang in /Users/jeremyhuang/IdeaProjects/srb)
+2022-07-20 20:25:38 [INFO ] main SpringApplication.java:655 com.hy.srb.sms.ServiceSmsApplication The following profiles are active: dev
+2022-07-20 20:25:39 [INFO ] main StartupInfoLogger.java:61 com.hy.srb.sms.ServiceSmsApplication Started ServiceSmsApplication in 1.488 seconds (JVM running for 1.928)
