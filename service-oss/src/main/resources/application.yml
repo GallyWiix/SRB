@@ -13,3 +13,7 @@ aliyun:
     keyId: LTAI5tHDfNyAsNSK9apo1ytU
     keySecret: KWzKHLtyxUURM7W1bBLV0InuIXz3Li
     bucketName: guli-filehy
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:9001/eureka

@@ -5,6 +5,7 @@ import com.hy.common.result.R;
 import com.hy.common.result.ResponseEnum;
 import com.hy.common.util.RandomUtils;
 import com.hy.common.util.RegexValidateUtils;
+import com.hy.srb.sms.client.CoreUserInfoClient;
 import com.hy.srb.sms.service.SmsService;
 import com.hy.srb.sms.util.SmsProperties;
 import io.swagger.annotations.Api;
@@ -22,13 +23,16 @@ import java.util.concurrent.TimeUnit;
 @RestController
 @RequestMapping("/api/sms")
 @Api(tags = "短信管理")
-@CrossOrigin
+//@CrossOrigin
 @Slf4j
 public class ApiSmsController {
     @Resource
     private SmsService smsService;
     @Resource
     private RedisTemplate redisTemplate;
+
+    @Resource
+    private CoreUserInfoClient coreUserInfoClient;
 
     @ApiOperation("获取验证码")
     @GetMapping("/send/{mobile}")
@@ -39,6 +43,10 @@ public class ApiSmsController {
         Assert.notEmpty(mobile, ResponseEnum.MOBILE_NULL_ERROR);
         //校验是否合法
         Assert.isTrue(RegexValidateUtils.checkCellphone(mobile),ResponseEnum.MOBILE_ERROR);
+
+        boolean result = coreUserInfoClient.checkMobile(mobile);
+        log.info("result = " + result);
+        Assert.isTrue(result == false, ResponseEnum.MOBILE_EXIST_ERROR);
         String code = RandomUtils.getFourBitRandom();
         HashMap<String,Object> map = new HashMap<>();
         map.put("code", code);

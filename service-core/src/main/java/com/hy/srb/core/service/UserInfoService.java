@@ -25,5 +25,7 @@ public interface UserInfoService extends IService<UserInfo> {
     //根据查询条件进行查询
     IPage<UserInfo> listPage(Page<UserInfo> pageParam, UserInfoQuery userInfoQuery);
 
+    void lock(Long id,Integer status);
 
+    boolean checkMobile(String mobile);
 }

@@ -3,26 +3,17 @@ package com.hy.srb.core.controller.admin;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.hy.common.exception.Assert;
 import com.hy.common.result.R;
-import com.hy.common.result.ResponseEnum;
-import com.hy.common.util.RegexValidateUtils;
-import com.hy.srb.base.util.JwtUtils;
 import com.hy.srb.core.pojo.entity.UserInfo;
 import com.hy.srb.core.pojo.query.UserInfoQuery;
-import com.hy.srb.core.pojo.vo.LoginVO;
-import com.hy.srb.core.pojo.vo.RegisterVO;
-import com.hy.srb.core.pojo.vo.UserInfoVO;
 import com.hy.srb.core.service.UserInfoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.web.bind.annotation.*;
-
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
+
 
 /**
  * <p>
@@ -35,7 +26,7 @@ import javax.servlet.http.HttpServletRequest;
 @RestController
 @Api(tags = "会员管理")
 @Slf4j
-@CrossOrigin
+//@CrossOrigin
 @RequestMapping("/admin/core/userInfo")
 public class AdminUserInfoController {
 
@@ -59,6 +50,18 @@ public class AdminUserInfoController {
 
         return R.ok().data("pageModel",pageModel);
 
+
+    }
+    @ApiOperation("锁定与解锁")
+    @PutMapping("/lock/{id}/{status}")
+    public R lock(
+            @ApiParam(value = "用户id",required = true)
+            @PathVariable("id") Long id,
+            @ApiParam(value = "锁定状态",required = true)
+            @PathVariable("status") Integer status){
+        userInfoService.lock(id,status);
+
+        return R.ok().message(status == 1 ?"解锁成功":"锁定成功");
 
     }
 

@@ -1,4 +1,2 @@
-2022-07-23 14:54:47 [INFO ] main StartupInfoLogger.java:61 com.hy.srb.core.ServiceCoreApplication Started ServiceCoreApplication in 1.978 seconds (JVM running for 2.25)
-2022-07-23 15:02:24 [INFO ] main StartupInfoLogger.java:55 com.hy.srb.core.ServiceCoreApplication Starting ServiceCoreApplication on jeremydeMac-mini.local with PID 7650 (/Users/jeremyhuang/IdeaProjects/srb/service-core/target/classes started by jeremyhuang in /Users/jeremyhuang/IdeaProjects/srb)
-2022-07-23 15:02:24 [INFO ] main SpringApplication.java:655 com.hy.srb.core.ServiceCoreApplication The following profiles are active: dev
-2022-07-23 15:02:26 [INFO ] main StartupInfoLogger.java:61 com.hy.srb.core.ServiceCoreApplication Started ServiceCoreApplication in 1.869 seconds (JVM running for 2.263)
+2022-07-24 16:29:16 [WARN ] http-nio-8110-exec-6 AdminIntegralGradeController.java:40 com.hy.srb.core.controller.admin.AdminIntegralGradeController this is log warn
+2022-07-24 16:29:16 [ERROR] http-nio-8110-exec-6 AdminIntegralGradeController.java:41 com.hy.srb.core.controller.admin.AdminIntegralGradeController this is log error

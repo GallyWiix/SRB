@@ -23,6 +23,10 @@ spring:
         max-wait: -1
         max-idle: 8
         min-idle: 0
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: localhost:8848
 
 mybatis-plus:
   configuration:
@@ -32,3 +36,7 @@ mybatis-plus:
 #logging:
 #  level:
 #    root: error
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:9001/eureka

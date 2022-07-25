@@ -9,6 +9,8 @@
         <module>service-core</module>
         <module>service-sms</module>
         <module>service-oss</module>
+        <module>service-eureka</module>
+        <module>service-gateway</module>
     </modules>
     <!--    <modules>-->
 <!--        <module>srb-common</module>-->
