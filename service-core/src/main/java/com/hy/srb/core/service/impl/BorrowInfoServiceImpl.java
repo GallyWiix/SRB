@@ -142,31 +142,33 @@ public class BorrowInfoServiceImpl extends ServiceImpl<BorrowInfoMapper, BorrowI
 
         return borrowInfoList;
     }
-//
-//    @Override
-//    public Map<String, Object> getBorrowInfoDetail(Long id) {
-//
-//        //查询借款对象：BorrowInfo
-//        BorrowInfo borrowInfo = baseMapper.selectById(id);
-//        String returnMethod = dictService.getNameByParentDictCodeAndValue("returnMethod", borrowInfo.getReturnMethod());
-//        String moneyUse = dictService.getNameByParentDictCodeAndValue("moneyUse", borrowInfo.getMoneyUse());
-//        String status = BorrowInfoStatusEnum.getMsgByStatus(borrowInfo.getStatus());
-//        borrowInfo.getParam().put("returnMethod", returnMethod);
-//        borrowInfo.getParam().put("moneyUse", moneyUse);
-//        borrowInfo.getParam().put("status", status);
-//
-//        //查询借款人对象：Borrower(BorrowerDetailVO)
-//        QueryWrapper<Borrower> borrowerQueryWrapper = new QueryWrapper<>();
-//        borrowerQueryWrapper.eq("user_id", borrowInfo.getUserId());
-//        Borrower borrower = borrowerMapper.selectOne(borrowerQueryWrapper);
-//        BorrowerDetailVO borrowerDetailVO = borrowerService.getBorrowerDetailVOById(borrower.getId());
-//
-//        //组装集合结果
-//        Map<String, Object> result = new HashMap<>();
-//        result.put("borrowInfo", borrowInfo);
-//        result.put("borrower", borrowerDetailVO);
-//        return result;
-//    }
+
+
+
+    @Override
+    public Map<String, Object> getBorrowInfoDetail(Long id) {
+
+        //查询借款对象：BorrowInfo
+        BorrowInfo borrowInfo = baseMapper.selectById(id);
+        String returnMethod = dictService.getNameByParentDictCodeAndValue("returnMethod", borrowInfo.getReturnMethod());
+        String moneyUse = dictService.getNameByParentDictCodeAndValue("moneyUse", borrowInfo.getMoneyUse());
+        String status = BorrowInfoStatusEnum.getMsgByStatus(borrowInfo.getStatus());
+        borrowInfo.getParam().put("returnMethod", returnMethod);
+        borrowInfo.getParam().put("moneyUse", moneyUse);
+        borrowInfo.getParam().put("status", status);
+
+        //查询借款人对象：Borrower(BorrowerDetailVO)
+        QueryWrapper<Borrower> borrowerQueryWrapper = new QueryWrapper<>();
+        borrowerQueryWrapper.eq("user_id", borrowInfo.getUserId());
+        Borrower borrower = borrowerMapper.selectOne(borrowerQueryWrapper);
+        BorrowerDetailVO borrowerDetailVO = borrowerService.getBorrowerDetailVOById(borrower.getId());
+
+        //组装集合结果
+        Map<String, Object> result = new HashMap<>();
+        result.put("borrowInfo", borrowInfo);
+        result.put("borrower", borrowerDetailVO);
+        return result;
+    }
 //
 //    @Transactional(rollbackFor = Exception.class)
 //    @Override
