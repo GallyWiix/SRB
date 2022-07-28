@@ -1,20 +1,12 @@
-2022-07-27 20:25:22 [INFO ] http-nio-8110-exec-9 Assert.java:17 com.hy.common.exception.Assert obj is null.....................
-2022-07-27 20:25:22 [ERROR] http-nio-8110-exec-9 UnifiedExceptionhandler.java:44 com.hy.common.exception.UnifiedExceptionhandler 用户不存在
-com.hy.common.exception.BusinessException: 用户不存在
-	at com.hy.common.exception.Assert.notNull(Assert.java:18)
-	at com.hy.srb.core.service.impl.UserInfoServiceImpl.login(UserInfoServiceImpl.java:84)
-	at com.hy.srb.core.service.impl.UserInfoServiceImpl$$FastClassBySpringCGLIB$$a024011b.invoke(<generated>)
-	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:771)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
-	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:367)
-	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:118)
-	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186)
-	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:749)
-	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:691)
-	at com.hy.srb.core.service.impl.UserInfoServiceImpl$$EnhancerBySpringCGLIB$$33f2f49e.login(<generated>)
-	at com.hy.srb.core.controller.api.UserInfoController.login(UserInfoController.java:76)
+2022-07-28 19:41:18 [INFO ] main SpringApplication.java:655 com.hy.srb.core.ServiceCoreApplication The following profiles are active: dev
+2022-07-28 19:41:22 [INFO ] main StartupInfoLogger.java:61 com.hy.srb.core.ServiceCoreApplication Started ServiceCoreApplication in 4.439 seconds (JVM running for 4.843)
+2022-07-28 19:51:19 [INFO ] main SpringApplication.java:655 com.hy.srb.core.ServiceCoreApplication The following profiles are active: dev
+2022-07-28 19:51:22 [INFO ] main StartupInfoLogger.java:61 com.hy.srb.core.ServiceCoreApplication Started ServiceCoreApplication in 3.179 seconds (JVM running for 3.639)
+2022-07-28 19:52:03 [ERROR] http-nio-8110-exec-10 UnifiedExceptionhandler.java:44 com.hy.common.exception.UnifiedExceptionhandler 未登录
+com.hy.common.exception.BusinessException: 未登录
+	at com.hy.srb.base.util.JwtUtils.getClaims(JwtUtils.java:83)
+	at com.hy.srb.base.util.JwtUtils.getUserId(JwtUtils.java:54)
+	at com.hy.srb.core.controller.api.BorrowInfoController.getBorrowerStatus(BorrowInfoController.java:57)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -28,8 +20,8 @@ com.hy.common.exception.BusinessException: 用户不存在
 	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
 	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
 	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
-	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909)
-	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:626)
 	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
 	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733)
 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
