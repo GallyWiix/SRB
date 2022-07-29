@@ -14,6 +14,8 @@ import com.hy.srb.core.mapper.BorrowInfoMapper;
 import com.hy.srb.core.pojo.entity.Borrower;
 import com.hy.srb.core.pojo.entity.IntegralGrade;
 import com.hy.srb.core.pojo.entity.UserInfo;
+import com.hy.srb.core.pojo.vo.BorrowInfoApprovalVO;
+import com.hy.srb.core.pojo.vo.BorrowerApprovalVO;
 import com.hy.srb.core.pojo.vo.BorrowerDetailVO;
 import com.hy.srb.core.service.BorrowInfoService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -169,22 +171,24 @@ public class BorrowInfoServiceImpl extends ServiceImpl<BorrowInfoMapper, BorrowI
         result.put("borrower", borrowerDetailVO);
         return result;
     }
-//
-//    @Transactional(rollbackFor = Exception.class)
-//    @Override
-//    public void approval(BorrowInfoApprovalVO borrowInfoApprovalVO) {
-//
-//        //修改借款审核的状态 borrow_info
-//        Long borrowInfoId = borrowInfoApprovalVO.getId();
-//        BorrowInfo borrowInfo = baseMapper.selectById(borrowInfoId);
-//        borrowInfo.setStatus(borrowInfoApprovalVO.getStatus());
-//        baseMapper.updateById(borrowInfo);
-//
-//        //如果审核通过，则产生新的标的记录 lend
-//        if(borrowInfoApprovalVO.getStatus().intValue() == BorrowInfoStatusEnum.CHECK_OK.getStatus().intValue()){
-//            //创建新标的
-//            lendService.createLend(borrowInfoApprovalVO, borrowInfo);
-//        }
-//    }
+
+
+
+    @Transactional(rollbackFor = Exception.class)
+    @Override
+    public void approval(BorrowInfoApprovalVO borrowInfoApprovalVO) {
+
+        //修改借款审核的状态 borrow_info
+        Long borrowInfoId = borrowInfoApprovalVO.getId();
+        BorrowInfo borrowInfo = baseMapper.selectById(borrowInfoId);
+        borrowInfo.setStatus(borrowInfoApprovalVO.getStatus());
+        baseMapper.updateById(borrowInfo);
+
+        //如果审核通过，则产生新的标的记录 lend
+        if(borrowInfoApprovalVO.getStatus().intValue() == BorrowInfoStatusEnum.CHECK_OK.getStatus().intValue()){
+            //创建新标的
+            lendService.createLend(borrowInfoApprovalVO, borrowInfo);
+        }
+    }
 
 }

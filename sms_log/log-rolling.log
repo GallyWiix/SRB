@@ -1,2 +1,2 @@
-2022-07-28 19:41:28 [INFO ] main SpringApplication.java:655 com.hy.srb.sms.ServiceSmsApplication The following profiles are active: dev
-2022-07-28 19:41:30 [INFO ] main StartupInfoLogger.java:61 com.hy.srb.sms.ServiceSmsApplication Started ServiceSmsApplication in 2.358 seconds (JVM running for 2.813)
+2022-07-29 20:00:49 [INFO ] main SpringApplication.java:655 com.hy.srb.sms.ServiceSmsApplication The following profiles are active: dev
+2022-07-29 20:00:51 [INFO ] main StartupInfoLogger.java:61 com.hy.srb.sms.ServiceSmsApplication Started ServiceSmsApplication in 2.696 seconds (JVM running for 3.131)
