@@ -1,2 +1,4 @@
-2022-07-29 20:00:46 [INFO ] main SpringApplication.java:655 com.hy.srb.gateway.ServiceGatewayApplication The following profiles are active: dev
-2022-07-29 20:00:48 [INFO ] main StartupInfoLogger.java:61 com.hy.srb.gateway.ServiceGatewayApplication Started ServiceGatewayApplication in 2.729 seconds (JVM running for 3.043)
+2022-07-30 14:10:36 [INFO ] main SpringApplication.java:655 com.hy.srb.gateway.ServiceGatewayApplication The following profiles are active: dev
+2022-07-30 14:10:38 [INFO ] main StartupInfoLogger.java:61 com.hy.srb.gateway.ServiceGatewayApplication Started ServiceGatewayApplication in 2.653 seconds (JVM running for 2.975)
+2022-07-30 20:52:29 [INFO ] main SpringApplication.java:655 com.hy.srb.gateway.ServiceGatewayApplication The following profiles are active: dev
+2022-07-30 20:52:31 [INFO ] main StartupInfoLogger.java:61 com.hy.srb.gateway.ServiceGatewayApplication Started ServiceGatewayApplication in 2.041 seconds (JVM running for 2.394)

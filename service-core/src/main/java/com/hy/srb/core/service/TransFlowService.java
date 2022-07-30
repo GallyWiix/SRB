@@ -1,5 +1,6 @@
 package com.hy.srb.core.service;
 
+import com.hy.srb.core.pojo.bo.TransFlowBO;
 import com.hy.srb.core.pojo.entity.TransFlow;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -12,5 +13,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  * @since 2022-07-14
  */
 public interface TransFlowService extends IService<TransFlow> {
+     void saveTransFlow(TransFlowBO transFlowBO);
 
+     boolean isSaveTransFlow(String agentBillNo);
 }
