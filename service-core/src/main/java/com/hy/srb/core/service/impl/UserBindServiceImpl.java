@@ -104,4 +104,9 @@ public class UserBindServiceImpl extends ServiceImpl<UserBindMapper, UserBind> i
         userInfo.setBindStatus(UserBindEnum.BIND_OK.getStatus());
         userInfoMapper.updateById(userInfo);
     }
+
+    @Override
+    public String getBindCodeByUserId(Long investUserId) {
+        return null;
+    }
 }
