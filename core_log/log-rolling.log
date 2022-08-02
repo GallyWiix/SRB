@@ -1,1 +1,3 @@
-2022-07-31 18:21:58 [INFO ] main StartupInfoLogger.java:61 com.hy.srb.core.ServiceCoreApplication Started ServiceCoreApplication in 3.287 seconds (JVM running for 3.601)
+2022-08-02 14:13:49 [INFO ] http-nio-8110-exec-3 UserBindController.java:62 com.hy.srb.core.controller.api.UserBindController 验签成功！开始账户绑定
+2022-08-02 14:13:59 [INFO ] http-nio-8110-exec-7 RequestHelper.java:40 com.hy.srb.core.hfb.RequestHelper 加密前：CHARGE20220802141359209|999888|3475bec89ed24e35bef471c364168ee7|10000|0|http://localhost/api/core/userAccount/notify|http://localhost:3000/user|1659420839812|9876543210
+2022-08-02 14:13:59 [INFO ] http-nio-8110-exec-7 RequestHelper.java:42 com.hy.srb.core.hfb.RequestHelper 加密后：218ecc9edaca96e810cb45748c90e8b6

@@ -72,15 +72,15 @@ public class LendItemController {
         }
         return "success";
     }
-//
-//    @ApiOperation("获取列表")
-//    @GetMapping("/list/{lendId}")
-//    public R list(
-//            @ApiParam(value = "标的id", required = true)
-//            @PathVariable Long lendId) {
-//        List<LendItem> list = lendItemService.selectByLendId(lendId);
-//        return R.ok().data("list", list);
-//    }
+
+    @ApiOperation("获取列表")
+    @GetMapping("/list/{lendId}")
+    public R list(
+            @ApiParam(value = "标的id", required = true)
+            @PathVariable Long lendId) {
+        List<LendItem> list = lendItemService.selectByLendId(lendId);
+        return R.ok().data("list", list);
+    }
 }
 
 
