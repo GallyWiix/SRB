@@ -1,6 +1,9 @@
 package com.hy.srb.core.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.hy.common.exception.Assert;
+import com.hy.common.result.ResponseEnum;
+import com.hy.srb.base.dto.SmsDTO;
 import com.hy.srb.core.enums.TransTypeEnum;
 import com.hy.srb.core.hfb.FormHelper;
 import com.hy.srb.core.hfb.HfbConst;
@@ -13,7 +16,13 @@ import com.hy.srb.core.pojo.entity.UserInfo;
 import com.hy.srb.core.service.TransFlowService;
 import com.hy.srb.core.service.UserAccountService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.hy.srb.core.service.UserBindService;
+import com.hy.srb.core.service.UserInfoService;
 import com.hy.srb.core.util.LendNoUtils;
+import com.hy.srb.rabbitutil.config.MQConfig;
+import com.hy.srb.rabbitutil.constant.MQConst;
+import com.hy.srb.rabbitutil.service.MQService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -30,11 +39,21 @@ import java.util.Map;
  * @since 2022-07-14
  */
 @Service
+@Slf4j
 public class UserAccountServiceImpl extends ServiceImpl<UserAccountMapper, UserAccount> implements UserAccountService {
     @Resource
     private UserInfoMapper userInfoMapper;
     @Resource
     private TransFlowService transFlowService;
+    @Resource
+    private UserAccountService userAccountService;
+    @Resource
+    private UserBindService userBindService;
+
+    @Resource
+    private UserInfoService userInfoService;
+    @Resource
+    private MQService mqService;
     @Override
     public String commitCharge(BigDecimal chargeAmt, Long userId) {
         //获取充值人绑定协议号
@@ -80,6 +99,18 @@ public class UserAccountServiceImpl extends ServiceImpl<UserAccountMapper, UserA
                 "充值啦");
 
         transFlowService.saveTransFlow(transFlowBO);
+
+        //发消息
+        String mobileByBindCode = userInfoService.getMobileByBindCode(bindCode);
+        SmsDTO smsDTO = new SmsDTO();
+        smsDTO.setMobile(mobileByBindCode);
+        smsDTO.setMessage("充值成功");
+        mqService.sendMessage(
+                MQConst.EXCHANGE_TOPIC_SMS,
+                MQConst.ROUTING_SMS_ITEM,
+                smsDTO
+        );
+
         return "success";
     }
 
@@ -92,4 +123,57 @@ public class UserAccountServiceImpl extends ServiceImpl<UserAccountMapper, UserA
         return userAccount.getAmount();
 
     }
+
+    @Override
+    public String commitWithdraw(BigDecimal fetchAmt, Long userId) {
+        //用户账户余额
+        BigDecimal amount = userAccountService.getAccount(userId);
+        Assert.isTrue(amount.doubleValue() >= fetchAmt.doubleValue(),
+                ResponseEnum.NOT_SUFFICIENT_FUNDS_ERROR);
+
+        String bindCode = userBindService.getBindCodeByUserId(userId);
+
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("agentId", HfbConst.AGENT_ID);
+        paramMap.put("agentBillNo", LendNoUtils.getWithdrawNo());
+        paramMap.put("bindCode", bindCode);
+        paramMap.put("fetchAmt", fetchAmt);
+        paramMap.put("feeAmt", new BigDecimal(0));
+        paramMap.put("notifyUrl", HfbConst.WITHDRAW_NOTIFY_URL);
+        paramMap.put("returnUrl", HfbConst.WITHDRAW_RETURN_URL);
+        paramMap.put("timestamp", RequestHelper.getTimestamp());
+        String sign = RequestHelper.getSign(paramMap);
+        paramMap.put("sign", sign);
+
+        //构建自动提交表单
+        String formStr = FormHelper.buildForm(HfbConst.WITHDRAW_URL, paramMap);
+        return formStr;
+    }
+
+    @Override
+    public void notifyWithdraw(Map<String, Object> paramMap) {
+        //幂等判断
+        log.info("提现成功");
+        String agentBillNo = (String)paramMap.get("agentBillNo");
+        boolean result = transFlowService.isSaveTransFlow(agentBillNo);
+        if(result){
+            log.warn("幂等性返回");
+            return;
+        }
+
+        //账户同步
+        String bindCode = (String)paramMap.get("bindCode");
+        String fetchAmt = (String)paramMap.get("fetchAmt");
+        baseMapper.updateAccount(bindCode, new BigDecimal("-" + fetchAmt), new BigDecimal(0));
+
+        //交易流水
+        TransFlowBO transFlowBO = new TransFlowBO(
+                agentBillNo,
+                bindCode,
+                new BigDecimal(fetchAmt),
+                TransTypeEnum.WITHDRAW,
+                "提现啦");
+        transFlowService.saveTransFlow(transFlowBO);
+    }
+
 }
